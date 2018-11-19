@@ -1,5 +1,10 @@
-p {
-  background-color: blue; }
+body h1 {
+  background-color: #C40048; }
 
-h1 {
-  background-color: green; }
+body > h1 {
+  background-color: #C40048; }
+
+#time-bank {
+  width: 1000;
+  height: 1000;
+  background-color: purple; }

@@ -1,7 +1,23 @@
-p {
-  background-color: blue;
+$primary-color: #C40048;
+
+body {
+  .time-banks {
+    
+  }
+
+  h1 {
+    background-color:$primary-color;
+  }
+
+
 }
 
-h1 {
-  background-color: green;
+body > h1 {
+  background-color:$primary-color;
+}
+
+#time-bank {
+  width: 1000;
+  height: 1000;
+  background-color: purple;
 }
