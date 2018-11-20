@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const timeBankCanvas = document.getElementById("time-bank");
 
-  timeBankCanvas.width = 1000;
-  timeBankCanvas.height = 1000;
-
+  // timeBankCanvas.width = 33%;
+  // timeBankCanvas.height = 33%;
 });

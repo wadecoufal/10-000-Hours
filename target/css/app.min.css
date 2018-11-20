@@ -1,1 +1,1 @@
-body h1,body>h1{background-color:#C40048}#time-bank{width:1000;height:1000;background-color:purple}
+body{font-family:'Roboto Condensed',sans-serif}body header h1{background-color:green;height:135px;text-align:center;font-size:42px;color:#fff;line-height:3}body main button{background-color:orange;border-radius:5px}.col-1,.col-2{width:40%;margin:3%;display:inline-block}@media only screen and (max-width:768px){[class*=col-]{width:100%;display:block;background-color:#ff0}}#time-bank{background-color:purple}
