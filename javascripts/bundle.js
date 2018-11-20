@@ -94,8 +94,9 @@
 /***/ (function(module, exports) {
 
 document.addEventListener("DOMContentLoaded", function () {
-  var timeBankCanvas = document.getElementById("time-bank"); // timeBankCanvas.width = 33%;
-  // timeBankCanvas.height = 33%;
+  var timeBankCanvas = document.getElementById("time-bank");
+  var timerButton = document.getElementById("timer-button");
+  var submitButton = document.getElementById("submit-button");
 });
 
 /***/ })
