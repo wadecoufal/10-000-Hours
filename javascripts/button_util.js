@@ -14,7 +14,28 @@ export const toggleTimeButton = (e, timer) => {
   console.log(e);
 }
 
-export const submitTime = (e) => {
+export const submitTime = (timer, totalTimeTag) => {
   // are you sure you want to submit? (alert)
-  totalTime.innerHTML = parseInt(totalTime.innerHTML) + time;
+  alert("Are you sure you want to finish this session?");
+
+  const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
+  const currentSessionTimeArr = timer.getTimeUnitsAsInts();
+
+  const newTotalTimeArr = [];
+  for (let i = 0; i < 3; i++) {
+    newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+  }
+
+  return stringifyTotalTime(newTotalTimeArr)
+}
+
+const breakTimeIntoIntUnits = (timeString) => {
+  const stringArr = timeString.split(":");
+  return stringArr.map( timeUnit => parseInt(timeUnit));
+}
+
+const stringifyTotalTime = (timeArr) => {
+  for (let i = 0; i < 3; i++) {
+    
+  }
 }

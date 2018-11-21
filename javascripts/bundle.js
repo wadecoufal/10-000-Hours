@@ -106,10 +106,16 @@ document.addEventListener("DOMContentLoaded", function () {
   var submitButton = document.getElementById("submit-button");
   var timerTag = document.getElementById("time");
   var timer = new _javascripts_timer_util_js__WEBPACK_IMPORTED_MODULE_1__["default"](timerTag);
+  var totalTimeTag = document.getElementById("time-total-bank"); // will be populated by localStorage
+
+  var totalTime = "00000:00:00";
+  totalTimeTag.innerHTML = totalTime;
   timerButton.addEventListener("click", function (e) {
     Object(_javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["toggleTimeButton"])(e, timer);
   });
-  submitButton.addEventListener("click", _javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["submitTime"]);
+  submitButton.addEventListener("click", function () {
+    return Object(_javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["submitTime"])(timer, totalTimeTag);
+  });
 });
 
 /***/ }),
@@ -141,9 +147,29 @@ var toggleTimeButton = function toggleTimeButton(e, timer) {
 
   console.log(e);
 };
-var submitTime = function submitTime(e) {
+var submitTime = function submitTime(timer, totalTimeTag) {
   // are you sure you want to submit? (alert)
-  totalTime.innerHTML = parseInt(totalTime.innerHTML) + time;
+  alert("Are you sure you want to finish this session?");
+  var totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
+  var currentSessionTimeArr = timer.getTimeUnitsAsInts();
+  var newTotalTimeArr = [];
+
+  for (var i = 0; i < 3; i++) {
+    newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+  }
+
+  return stringifyTotalTime(newTotalTimeArr);
+};
+
+var breakTimeIntoIntUnits = function breakTimeIntoIntUnits(timeString) {
+  var stringArr = timeString.split(":");
+  return stringArr.map(function (timeUnit) {
+    return parseInt(timeUnit);
+  });
+};
+
+var stringifyTotalTime = function stringifyTotalTime(timeArr) {
+  for (var i = 0; i < 3; i++) {}
 };
 
 /***/ }),
@@ -173,6 +199,8 @@ function () {
     this.minutes = 0;
     this.hours = 0;
     this.timerTag = timerTag;
+    this.startTimer = this.startTimer.bind(this);
+    this.pauseTimer = this.pauseTimer.bind(this);
   }
 
   _createClass(Timer, [{
@@ -199,9 +227,9 @@ function () {
       clearInterval(this.timerInterval);
     }
   }, {
-    key: "getSeconds",
-    value: function getSeconds() {
-      return this.seconds;
+    key: "getTimeUnitsAsInts",
+    value: function getTimeUnitsAsInts() {
+      return [this.hours, this.minutes, this.seconds];
     }
   }, {
     key: "updateTimerDisplay",
@@ -213,7 +241,7 @@ function () {
     value: function stringifyTime() {
       var _this2 = this;
 
-      [this.hours, this.minutes, this.seconds].map(function (timeUnit) {
+      return [this.hours, this.minutes, this.seconds].map(function (timeUnit) {
         return _this2.stringifyTimeUnit(timeUnit);
       }).join(":");
     }

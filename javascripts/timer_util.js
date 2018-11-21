@@ -6,6 +6,9 @@ class Timer {
     this.hours = 0;
 
     this.timerTag = timerTag;
+
+    this.startTimer = this.startTimer.bind(this);
+    this.pauseTimer = this.pauseTimer.bind(this);
   }
 
   resetTimer() {
@@ -25,8 +28,8 @@ class Timer {
     clearInterval(this.timerInterval);
   }
 
-  getSeconds() {
-    return this.seconds;
+  getTimeUnitsAsInts() {
+    return [this.hours, this.minutes, this.seconds];
   }
 
   updateTimerDisplay() {
@@ -34,7 +37,7 @@ class Timer {
   }
 
   stringifyTime() {
-    [this.hours, this.minutes, this.seconds].map( timeUnit => {
+    return [this.hours, this.minutes, this.seconds].map( timeUnit => {
       return this.stringifyTimeUnit(timeUnit);
     }).join(":");
   }
