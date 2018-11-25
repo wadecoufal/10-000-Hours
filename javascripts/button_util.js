@@ -29,7 +29,8 @@ export const submitTime = (timer, totalTimeTag) => {
     newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
   }
   console.log(stringifyTotalTime(newTotalTimeArr));
-  totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr)
+  totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
+  timer.resetTimer();
 }
 
 const breakTimeIntoIntUnits = (timeString) => {

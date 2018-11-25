@@ -162,6 +162,7 @@ var submitTime = function submitTime(timer, totalTimeTag) {
 
   console.log(stringifyTotalTime(newTotalTimeArr));
   totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
+  timer.resetTimer();
 };
 
 var breakTimeIntoIntUnits = function breakTimeIntoIntUnits(timeString) {
@@ -225,6 +226,9 @@ function () {
       this.seconds = 0;
       this.minutes = 0;
       this.hours = 0;
+      this.pauseTimer();
+      this.updateTimerDisplay();
+      document.getElementById('timer-button').innerHTML = "Start";
     }
   }, {
     key: "startTimer",
