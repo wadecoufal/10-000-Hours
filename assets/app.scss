@@ -9,9 +9,9 @@ body {
 }
 
 header {
+  background-color: green;
+  height: 135px;
   h1 {
-    background-color: green;
-    height: 135px;
     text-align: center;
     font-size: 42px;
     color: white;
@@ -36,25 +36,17 @@ main {
 
 
 
-.col-1 {
-  width: 33%;
+.col {
+  width: 45%;
   height: 60vh;
   min-height: 300px;
   margin: 4%;
   display: inline-block;
-}
-.col-2 {
-  width: 33%;
-  height: 60vh;
-  min-height: 300px;
-  margin: 4%;
-  display: inline-block;
-  background-color: pink;
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    [class*="col-"] {
+    [class*="col"] {
         width: 94%;
         display: block;
         background-color: yellow;
@@ -65,21 +57,50 @@ main {
 }
 
 #time-bank {
-  
+  .col-header {
+    background-color: purple;
+  }
+
+  .col-mid {
+    background-color: brown;
+    height: 450px;
+  }
+
+  .col-footer {
+    background-color: orange;
+  }
 }
 
 #current-session {
-  background-color: blue;
-  height: 150px;
-  
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  .col-header {
+    background-color: pink;
+  }
+
+  .col-mid {
+    background-color: blue;
+    height: 450px;
+  }
+
+  .col-footer {
+    background-color: gray;
+  }
 }
 
-#total-time {
-  background-color: brown;
-  height: 400px;;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+.col-header {
+
 }
+
+.col-mid {
+
+}
+
+.col-footer {
+
+}
+
+.col-header, .col-footer {
+  height: 75px;
+}
+
+
 

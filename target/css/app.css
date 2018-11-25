@@ -5,13 +5,14 @@ body {
   text-align: center;
   color: white; }
 
-header h1 {
+header {
   background-color: green;
-  height: 135px;
-  text-align: center;
-  font-size: 42px;
-  color: white;
-  line-height: 3; }
+  height: 135px; }
+  header h1 {
+    text-align: center;
+    font-size: 42px;
+    color: white;
+    line-height: 3; }
 
 main {
   display: -webkit-box;
@@ -27,38 +28,41 @@ main {
   main h1 {
     font-size: 42px; }
 
-.col-1 {
-  width: 33%;
+.col {
+  width: 45%;
   height: 60vh;
   min-height: 300px;
   margin: 4%;
   display: inline-block; }
 
-.col-2 {
-  width: 33%;
-  height: 60vh;
-  min-height: 300px;
-  margin: 4%;
-  display: inline-block;
-  background-color: pink; }
-
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
-  [class*="col-"] {
+  [class*="col"] {
     width: 94%;
     display: block;
     background-color: yellow; }
   body main {
     display: block; } }
 
-#current-session {
-  background-color: blue;
-  height: 150px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
+#time-bank .col-header {
+  background-color: purple; }
 
-#total-time {
+#time-bank .col-mid {
   background-color: brown;
-  height: 400px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px; }
+  height: 450px; }
+
+#time-bank .col-footer {
+  background-color: orange; }
+
+#current-session .col-header {
+  background-color: pink; }
+
+#current-session .col-mid {
+  background-color: blue;
+  height: 450px; }
+
+#current-session .col-footer {
+  background-color: gray; }
+
+.col-header, .col-footer {
+  height: 75px; }

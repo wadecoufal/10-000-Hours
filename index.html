@@ -21,23 +21,31 @@
     </header>
 
     <main>
-      <div id="time-bank" class="col-1">
-        <div id="current-session">
-          <p id="time-total-bank">00000:00:00</p>
-        </div>
-        <div id="total-time"></div>
+      <div id="time-bank" class="col">
+        <div id="time-total-bank" class="col-header">00000:00:00</div>
+
+        <div class="col-mid"></div>
+        
+        <div class="col-footer"></div>
       </div>
 
-      <div class="col-2">
-        <div>
-          <h1 id="time">00:00:00</h1>
-          <div id="time-control-buttons">
+      <div id="current-session" class="col">
+
+        <div class="col-header">
+          <h1>00:00:00</h1>
+          <div>
             <button id="timer-button">Start</button>
             <button id="submit-button">Finish</button>
           </div>
         </div>
 
-        <div>
+        <div class="col-mid">
+          <ul id="seconds"></ul>
+          <ul id="minutes"></ul>
+          <ul id="hours"></ul>
+        </div>
+        
+        <div class="col-footer">
           <h1>Skill</h1>
           <div id="skill-control-buttons">
             <button>Change Skill</button>
