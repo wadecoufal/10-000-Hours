@@ -216,6 +216,9 @@ function () {
     this.minutes = 0;
     this.hours = 0;
     this.timerTag = timerTag;
+    this.secondsBank = document.getElementById('seconds');
+    this.minutesBank = document.getElementById('minutes');
+    this.hoursBank = document.getElementById('hours');
     this.startTimer = this.startTimer.bind(this);
     this.pauseTimer = this.pauseTimer.bind(this);
   }
@@ -277,13 +280,19 @@ function () {
   }, {
     key: "incrementTime",
     value: function incrementTime() {
-      this.seconds += 1;
+      this.seconds += 1; // append second li
 
       if (this.seconds === 60) {
+        // append minute li
+        // clear second li
+        this.secondsBank.innerHTML = "";
         this.seconds = 0;
         this.minutes += 1;
 
         if (this.minutes === 60) {
+          // append hour li
+          // clear minute li
+          this.minutesBank.innerHTML = "";
           this.minutes = 0;
           this.hours += 1;
         }

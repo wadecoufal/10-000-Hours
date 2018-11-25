@@ -63,7 +63,14 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
   #current-session .col-mid #seconds {
-    background-color: maroon; }
+    background-color: maroon;
+    display: grid;
+    grid-template: repeat(10, 1fr)/repeat(6, 1fr); }
+    #current-session .col-mid #seconds li {
+      width: 15px;
+      height: 15px;
+      margin: auto;
+      background-color: black; }
   #current-session .col-mid #minutes {
     background-color: lightblue; }
   #current-session .col-mid #hours {

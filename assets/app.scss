@@ -83,7 +83,15 @@ main {
     grid-template-columns: repeat(3, 1fr);
     #seconds {
       background-color: maroon;
-      
+      display: grid;
+      grid-template: repeat(10, 1fr) / repeat(6, 1fr);
+      li {
+        width: 15px;
+        height: 15px;
+        margin: auto;
+        background-color: black;
+        // grid-area: 2 / 3 / 3 / 4;
+      }
     }
     
     #minutes {
