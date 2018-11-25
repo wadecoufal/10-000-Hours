@@ -59,7 +59,15 @@ main {
 
 #current-session .col-mid {
   background-color: blue;
-  height: 450px; }
+  height: 450px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
+  #current-session .col-mid #seconds {
+    background-color: maroon; }
+  #current-session .col-mid #minutes {
+    background-color: lightblue; }
+  #current-session .col-mid #hours {
+    background-color: red; }
 
 #current-session .col-footer {
   background-color: gray; }

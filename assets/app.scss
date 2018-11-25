@@ -79,6 +79,22 @@ main {
   .col-mid {
     background-color: blue;
     height: 450px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    #seconds {
+      background-color: maroon;
+      
+    }
+    
+    #minutes {
+      background-color: lightblue;
+      
+    }
+    
+    #hours {
+      background-color: red;
+      
+    }
   }
 
   .col-footer {
