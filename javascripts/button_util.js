@@ -21,12 +21,15 @@ export const submitTime = (timer, totalTimeTag) => {
   const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
   const currentSessionTimeArr = timer.getTimeUnitsAsInts();
 
+  console.log('totalTimeArr', totalTimeArr);
+  console.log('currentSessionTimeArr', currentSessionTimeArr);
+
   const newTotalTimeArr = [];
   for (let i = 0; i < 3; i++) {
     newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
   }
-
-  return stringifyTotalTime(newTotalTimeArr)
+  console.log(stringifyTotalTime(newTotalTimeArr));
+  totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr)
 }
 
 const breakTimeIntoIntUnits = (timeString) => {
@@ -35,7 +38,19 @@ const breakTimeIntoIntUnits = (timeString) => {
 }
 
 const stringifyTotalTime = (timeArr) => {
+   
   for (let i = 0; i < 3; i++) {
-    
+    if (i === 0) {
+      const timeLength = timeArr[i].toString().length;
+      timeArr[i] = (5-timeLength) * '0' + timeArr[i];
+    } else {
+      if (timeArr[i] < 10) {
+        timeArr[i] = '0' + timeArr[i];
+      } else {
+        timeArr[i] = timeArr[i].toString();
+      }
+    }
   }
+
+  return timeArr.join(":");
 }

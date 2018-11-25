@@ -152,13 +152,16 @@ var submitTime = function submitTime(timer, totalTimeTag) {
   alert("Are you sure you want to finish this session?");
   var totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
   var currentSessionTimeArr = timer.getTimeUnitsAsInts();
+  console.log('totalTimeArr', totalTimeArr);
+  console.log('currentSessionTimeArr', currentSessionTimeArr);
   var newTotalTimeArr = [];
 
   for (var i = 0; i < 3; i++) {
     newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
   }
 
-  return stringifyTotalTime(newTotalTimeArr);
+  console.log(stringifyTotalTime(newTotalTimeArr));
+  totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
 };
 
 var breakTimeIntoIntUnits = function breakTimeIntoIntUnits(timeString) {
@@ -169,7 +172,20 @@ var breakTimeIntoIntUnits = function breakTimeIntoIntUnits(timeString) {
 };
 
 var stringifyTotalTime = function stringifyTotalTime(timeArr) {
-  for (var i = 0; i < 3; i++) {}
+  for (var i = 0; i < 3; i++) {
+    if (i === 0) {
+      var timeLength = timeArr[i].toString().length;
+      timeArr[i] = (5 - timeLength) * '0' + timeArr[i];
+    } else {
+      if (timeArr[i] < 10) {
+        timeArr[i] = '0' + timeArr[i];
+      } else {
+        timeArr[i] = timeArr[i].toString();
+      }
+    }
+  }
+
+  return timeArr.join(":");
 };
 
 /***/ }),
