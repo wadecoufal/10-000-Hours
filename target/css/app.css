@@ -59,29 +59,21 @@ main {
 
 #current-session .col-mid {
   background-color: blue;
-  height: 450px;
+  height: 480px;
+  width: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
   #current-session .col-mid #seconds, #current-session .col-mid #minutes {
     display: grid;
-    grid-template: repeat(10, 1fr)/repeat(6, 1fr); }
-    #current-session .col-mid #seconds li, #current-session .col-mid #minutes li {
-      width: 15px;
-      height: 15px;
-      margin: auto;
-      background-color: black; }
+    grid-template: repeat(12, 1fr)/repeat(5, 1fr); }
   #current-session .col-mid #seconds {
-    background-color: maroon; }
+    background-color: #e6ffe6; }
   #current-session .col-mid #minutes {
-    background-color: lightcoral; }
+    background-color: #e6f5ff; }
   #current-session .col-mid #hours {
-    background-color: red;
-    grid-template: repeat(5, 1rf)/1fr; }
-    #current-session .col-mid #hours li {
-      width: 35px;
-      height: 35px;
-      margin: auto;
-      background-color: black; }
+    background-color: #f0e6ff;
+    display: grid;
+    grid-template: repeat(5, 1fr)/repeat(2, 1fr); }
 
 #current-session .col-footer {
   background-color: gray; }

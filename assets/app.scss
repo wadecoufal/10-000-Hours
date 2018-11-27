@@ -78,36 +78,35 @@ main {
 
   .col-mid {
     background-color: blue;
-    height: 450px;
+    height: 480px;
+    width: 600px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     #seconds, #minutes {
       display: grid;
-      grid-template: repeat(10, 1fr) / repeat(6, 1fr);
+      grid-template: repeat(12, 1fr) / repeat(5, 1fr);
       li {
-        width: 15px;
-        height: 15px;
-        margin: auto;
-        background-color: black;
+        // width: 40px;
+        // height: 40px;
       }
     }
 
     #seconds {
-      background-color: maroon;
+      background-color: #e6ffe6;
     }
 
     #minutes {
-      background-color: lightcoral;
+      background-color: #e6f5ff;
     }
     
     #hours {
-      background-color: red;
-      grid-template: repeat(5, 1rf) / 1fr;
+      background-color: #f0e6ff;
+      display: grid;
+      grid-template: repeat(5, 1fr) / repeat(2, 1fr);
       li {
-        width: 35px;
-        height: 35px;
-        margin: auto;
-        background-color: black;
+        // width: 100px;
+        // height: 100px;
+        // background-color: black;
       }
     }
   }

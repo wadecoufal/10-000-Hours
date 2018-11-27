@@ -1,3 +1,5 @@
+import { getColor } from '../assets/colors.js';
+
 class Timer {
 
   constructor(timerTag) {
@@ -55,22 +57,34 @@ class Timer {
     } else {
       return integer.toString();
     }
-  } 
+  }
+  
+  addSquareToTimeBank(timeBank, color) {
+    const square = document.createElement('li');
+    square.setAttribute('style', "background-color: " + getColor(color));
+    console.log(getColor(color));
+    if (timeBank === "seconds") {
+      this.secondsBank.appendChild(square);
+    } else if (timeBank === "minutes") {
+      this.minutesBank.appendChild(square);
+    } else if (timeBank === "hours") {
+      this.hoursBank.appendChild(square);
+    }
+  }
 
   incrementTime() {
     this.seconds += 1;
-    // append second li
-    const secondSquare = document.createElement('li');
-    this.secondsBank.appendChild(secondSquare);
+
+    this.addSquareToTimeBank('seconds', 'green');
     if (this.seconds === 60) {
-      const minuteSquare = document.createElement('li');
-      this.minutesBank.appendChild(minuteSquare);
+      this.addSquareToTimeBank('minutes', 'blue');
+      
       this.secondsBank.innerHTML = "";
       this.seconds = 0;
       this.minutes += 1;
       if (this.minutes === 60) {
-        const hourSquare = document.createElement('li');
-        this.hoursBank.appendChild(hourSquare);
+        this.addSquareToTimeBank('hours', 'purple');
+        
         this.minutesBank.innerHTML = "";
         this.minutes = 0;
         this.hours += 1;

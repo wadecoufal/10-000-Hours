@@ -86,6 +86,28 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/colors.js":
+/*!**************************!*\
+  !*** ./assets/colors.js ***!
+  \**************************/
+/*! exports provided: getColor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getColor", function() { return getColor; });
+var COLORS = {
+  green: ["#b3ffb3", "#99ff99", "#80ff80", "#66ff66", "#4dff4d"],
+  blue: ["#b3e0ff", "#99d6ff", "#80ccff", "#66c2ff", "#4db8ff"],
+  purple: ["#e0ccff", "#d1b3ff", "#c299ff", "#b380ff", "#a366ff"]
+};
+var getColor = function getColor(color) {
+  var randNum = Math.floor(Math.random() * 5);
+  return COLORS[color][randNum];
+};
+
+/***/ }),
+
 /***/ "./hours.js":
 /*!******************!*\
   !*** ./hours.js ***!
@@ -200,11 +222,14 @@ var stringifyTotalTime = function stringifyTotalTime(timeArr) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assets_colors_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/colors.js */ "./assets/colors.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 var Timer =
 /*#__PURE__*/
@@ -278,23 +303,34 @@ function () {
       }
     }
   }, {
+    key: "addSquareToTimeBank",
+    value: function addSquareToTimeBank(timeBank, color) {
+      var square = document.createElement('li');
+      square.setAttribute('style', "background-color: " + Object(_assets_colors_js__WEBPACK_IMPORTED_MODULE_0__["getColor"])(color));
+      console.log(Object(_assets_colors_js__WEBPACK_IMPORTED_MODULE_0__["getColor"])(color));
+
+      if (timeBank === "seconds") {
+        this.secondsBank.appendChild(square);
+      } else if (timeBank === "minutes") {
+        this.minutesBank.appendChild(square);
+      } else if (timeBank === "hours") {
+        this.hoursBank.appendChild(square);
+      }
+    }
+  }, {
     key: "incrementTime",
     value: function incrementTime() {
-      this.seconds += 1; // append second li
-
-      var secondSquare = document.createElement('li');
-      this.secondsBank.appendChild(secondSquare);
+      this.seconds += 1;
+      this.addSquareToTimeBank('seconds', 'green');
 
       if (this.seconds === 60) {
-        var minuteSquare = document.createElement('li');
-        this.minutesBank.appendChild(minuteSquare);
+        this.addSquareToTimeBank('minutes', 'blue');
         this.secondsBank.innerHTML = "";
         this.seconds = 0;
         this.minutes += 1;
 
         if (this.minutes === 60) {
-          var hourSquare = document.createElement('li');
-          this.hoursBank.appendChild(hourSquare);
+          this.addSquareToTimeBank('hours', 'purple');
           this.minutesBank.innerHTML = "";
           this.minutes = 0;
           this.hours += 1;
