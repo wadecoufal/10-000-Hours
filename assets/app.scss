@@ -81,8 +81,7 @@ main {
     height: 450px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    #seconds {
-      background-color: maroon;
+    #seconds, #minutes {
       display: grid;
       grid-template: repeat(10, 1fr) / repeat(6, 1fr);
       li {
@@ -90,18 +89,26 @@ main {
         height: 15px;
         margin: auto;
         background-color: black;
-        // grid-area: 2 / 3 / 3 / 4;
       }
     }
-    
+
+    #seconds {
+      background-color: maroon;
+    }
+
     #minutes {
-      background-color: lightblue;
-      
+      background-color: lightcoral;
     }
     
     #hours {
       background-color: red;
-      
+      grid-template: repeat(5, 1rf) / 1fr;
+      li {
+        width: 35px;
+        height: 35px;
+        margin: auto;
+        background-color: black;
+      }
     }
   }
 

@@ -62,19 +62,26 @@ main {
   height: 450px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
-  #current-session .col-mid #seconds {
-    background-color: maroon;
+  #current-session .col-mid #seconds, #current-session .col-mid #minutes {
     display: grid;
     grid-template: repeat(10, 1fr)/repeat(6, 1fr); }
-    #current-session .col-mid #seconds li {
+    #current-session .col-mid #seconds li, #current-session .col-mid #minutes li {
       width: 15px;
       height: 15px;
       margin: auto;
       background-color: black; }
+  #current-session .col-mid #seconds {
+    background-color: maroon; }
   #current-session .col-mid #minutes {
-    background-color: lightblue; }
+    background-color: lightcoral; }
   #current-session .col-mid #hours {
-    background-color: red; }
+    background-color: red;
+    grid-template: repeat(5, 1rf)/1fr; }
+    #current-session .col-mid #hours li {
+      width: 35px;
+      height: 35px;
+      margin: auto;
+      background-color: black; }
 
 #current-session .col-footer {
   background-color: gray; }

@@ -17,7 +17,7 @@ class Timer {
 
   resetTimer() {
     this.seconds = 0;
-    this.minutes = 0;
+    this.minutes = 59;
     this.hours = 0;
     this.pauseTimer();
     this.updateTimerDisplay();
@@ -28,7 +28,7 @@ class Timer {
     this.timerInterval = setInterval( () => {
       this.incrementTime();
       this.updateTimerDisplay();
-    }, 1000);
+    }, 10);
   }
 
   pauseTimer() {
@@ -60,18 +60,18 @@ class Timer {
   incrementTime() {
     this.seconds += 1;
     // append second li
+    const secondSquare = document.createElement('li');
+    this.secondsBank.appendChild(secondSquare);
     if (this.seconds === 60) {
-      // append minute li
-      // clear second li
+      const minuteSquare = document.createElement('li');
+      this.minutesBank.appendChild(minuteSquare);
       this.secondsBank.innerHTML = "";
-
       this.seconds = 0;
       this.minutes += 1;
       if (this.minutes === 60) {
-        // append hour li
-        // clear minute li
+        const hourSquare = document.createElement('li');
+        this.hoursBank.appendChild(hourSquare);
         this.minutesBank.innerHTML = "";
-
         this.minutes = 0;
         this.hours += 1;
       }
