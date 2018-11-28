@@ -19,8 +19,13 @@ class Timer {
 
   resetTimer() {
     this.seconds = 0;
-    this.minutes = 59;
+    this.minutes = 0;
     this.hours = 0;
+
+    this.secondsBank.innerHTML = "";
+    this.minutesBank.innerHTML = "";
+    this.hoursBank.innerHTML = "";
+
     this.pauseTimer();
     this.updateTimerDisplay();
     document.getElementById('timer-button').innerHTML = "Start";

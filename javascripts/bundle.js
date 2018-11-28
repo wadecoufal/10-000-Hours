@@ -194,20 +194,23 @@ var toggleTimeButton = function toggleTimeButton(e, timer) {
 };
 var submitTime = function submitTime(timer, totalTimeTag) {
   // are you sure you want to submit? (alert)
-  alert("Are you sure you want to finish this session?");
-  var totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
-  var currentSessionTimeArr = timer.getTimeUnitsAsInts();
-  console.log('totalTimeArr', totalTimeArr);
-  console.log('currentSessionTimeArr', currentSessionTimeArr);
-  var newTotalTimeArr = [];
+  var confirmed = confirm("Are you sure you want to finish this session?");
 
-  for (var i = 0; i < 3; i++) {
-    newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+  if (confirmed) {
+    var totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
+    var currentSessionTimeArr = timer.getTimeUnitsAsInts();
+    console.log('totalTimeArr', totalTimeArr);
+    console.log('currentSessionTimeArr', currentSessionTimeArr);
+    var newTotalTimeArr = [];
+
+    for (var i = 0; i < 3; i++) {
+      newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+    }
+
+    console.log(stringifyTotalTime(newTotalTimeArr));
+    totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
+    timer.resetTimer();
   }
-
-  console.log(stringifyTotalTime(newTotalTimeArr));
-  totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
-  timer.resetTimer();
 };
 
 var breakTimeIntoIntUnits = function breakTimeIntoIntUnits(timeString) {
@@ -275,8 +278,11 @@ function () {
     key: "resetTimer",
     value: function resetTimer() {
       this.seconds = 0;
-      this.minutes = 59;
+      this.minutes = 0;
       this.hours = 0;
+      this.secondsBank.innerHTML = "";
+      this.minutesBank.innerHTML = "";
+      this.hoursBank.innerHTML = "";
       this.pauseTimer();
       this.updateTimerDisplay();
       document.getElementById('timer-button').innerHTML = "Start";

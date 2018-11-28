@@ -49,7 +49,35 @@ main {
 
 #time-bank .col-mid {
   background-color: brown;
-  height: 450px; }
+  height: 480px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  #time-bank .col-mid div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100px;
+    height: 100%; }
+    #time-bank .col-mid div #total-seconds li, #time-bank .col-mid div #total-minutes li {
+      border-radius: 7px;
+      width: 19px;
+      height: 19px;
+      margin: auto; }
+    #time-bank .col-mid div #total-seconds {
+      background-color: #e6ffe6;
+      height: 50%; }
+    #time-bank .col-mid div #total-minutes {
+      background-color: #e6f5ff;
+      height: 50%; }
+  #time-bank .col-mid #total-hours {
+    background-color: #ffcc80;
+    width: 511px;
+    height: 100%; }
 
 #time-bank .col-footer {
   background-color: orange; }

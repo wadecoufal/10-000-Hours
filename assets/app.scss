@@ -63,7 +63,36 @@ main {
 
   .col-mid {
     background-color: brown;
-    height: 450px;
+    height: 480px;
+    display: flex;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 100px;
+      height: 100%;
+      #total-seconds, #total-minutes {
+        li {
+          border-radius: 7px;
+          width: 19px;
+          height: 19px;
+          margin: auto;
+        }
+      }
+      #total-seconds {
+        background-color: #e6ffe6;
+        height: 50%;
+      }
+      #total-minutes {
+        background-color: #e6f5ff;
+        height: 50%;
+      }
+    }
+    #total-hours {
+        background-color: #ffcc80;
+        width: 511px;
+        height: 100%;
+      }
   }
 
   .col-footer {

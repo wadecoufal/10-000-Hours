@@ -16,21 +16,23 @@ export const toggleTimeButton = (e, timer) => {
 
 export const submitTime = (timer, totalTimeTag) => {
   // are you sure you want to submit? (alert)
-  alert("Are you sure you want to finish this session?");
+  const confirmed = confirm("Are you sure you want to finish this session?");
 
-  const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
-  const currentSessionTimeArr = timer.getTimeUnitsAsInts();
+  if (confirmed) {
+    const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
+    const currentSessionTimeArr = timer.getTimeUnitsAsInts();
 
-  console.log('totalTimeArr', totalTimeArr);
-  console.log('currentSessionTimeArr', currentSessionTimeArr);
+    console.log('totalTimeArr', totalTimeArr);
+    console.log('currentSessionTimeArr', currentSessionTimeArr);
 
-  const newTotalTimeArr = [];
-  for (let i = 0; i < 3; i++) {
-    newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+    const newTotalTimeArr = [];
+    for (let i = 0; i < 3; i++) {
+      newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+    }
+    console.log(stringifyTotalTime(newTotalTimeArr));
+    totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
+    timer.resetTimer();
   }
-  console.log(stringifyTotalTime(newTotalTimeArr));
-  totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
-  timer.resetTimer();
 }
 
 const breakTimeIntoIntUnits = (timeString) => {
