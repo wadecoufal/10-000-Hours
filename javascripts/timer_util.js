@@ -67,7 +67,7 @@ class Timer {
   addSquareToTimeBank(timeBank, color) {
     const square = document.createElement('li');
     square.setAttribute('style', "background-color: " + getColor(color));
-    console.log(getColor(color));
+
     if (timeBank === "seconds") {
       this.secondsBank.appendChild(square);
     } else if (timeBank === "minutes") {

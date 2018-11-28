@@ -142,8 +142,10 @@ var getColor = function getColor(color) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./javascripts/button_util.js */ "./javascripts/button_util.js");
 /* harmony import */ var _javascripts_timer_util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./javascripts/timer_util.js */ "./javascripts/timer_util.js");
+/* harmony import */ var _javascripts_time_bank_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./javascripts/time_bank.js */ "./javascripts/time_bank.js");
 // import * AS ButtonUtil from './javascripts/button_util.js';
 // const ButtonUtil = require('./javascripts/button_util.js');
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -155,11 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var totalTime = "00000:00:00";
   totalTimeTag.innerHTML = totalTime;
+  var timeBank = new _javascripts_time_bank_js__WEBPACK_IMPORTED_MODULE_2__["default"](totalTimeTag);
   timerButton.addEventListener("click", function (e) {
     Object(_javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["toggleTimeButton"])(e, timer);
   });
   submitButton.addEventListener("click", function () {
-    return Object(_javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["submitTime"])(timer, totalTimeTag);
+    return Object(_javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["submitTime"])(timer, timeBank);
   });
 });
 
@@ -192,23 +195,25 @@ var toggleTimeButton = function toggleTimeButton(e, timer) {
 
   console.log(e);
 };
-var submitTime = function submitTime(timer, totalTimeTag) {
+var submitTime = function submitTime(timer, timeBank) {
   // are you sure you want to submit? (alert)
   var confirmed = confirm("Are you sure you want to finish this session?");
 
   if (confirmed) {
-    var totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
+    // grab current session time
+    // add current session time to TimeBank (it will update tag itself)
+    // reset current session time 
+    // const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
     var currentSessionTimeArr = timer.getTimeUnitsAsInts();
-    console.log('totalTimeArr', totalTimeArr);
-    console.log('currentSessionTimeArr', currentSessionTimeArr);
-    var newTotalTimeArr = [];
+    timeBank.updateTime(currentSessionTimeArr); // console.log('totalTimeArr', totalTimeArr);
+    // console.log('currentSessionTimeArr', currentSessionTimeArr);
+    // const newTotalTimeArr = [];
+    // for (let i = 0; i < 3; i++) {
+    //   newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+    // }
+    // console.log(stringifyTotalTime(newTotalTimeArr));
+    // totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
 
-    for (var i = 0; i < 3; i++) {
-      newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
-    }
-
-    console.log(stringifyTotalTime(newTotalTimeArr));
-    totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
     timer.resetTimer();
   }
 };
@@ -236,6 +241,99 @@ var stringifyTotalTime = function stringifyTotalTime(timeArr) {
 
   return timeArr.join(":");
 };
+
+/***/ }),
+
+/***/ "./javascripts/time_bank.js":
+/*!**********************************!*\
+  !*** ./javascripts/time_bank.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var TimeBank =
+/*#__PURE__*/
+function () {
+  function TimeBank(totalTimeTag) {
+    _classCallCheck(this, TimeBank);
+
+    this.seconds = 0;
+    this.minutes = 0;
+    this.hours = 0;
+    this.totalTimeTag = totalTimeTag;
+    this.secondsBank = document.getElementById('total-seconds');
+    this.minutesBank = document.getElementById('total-minutes');
+    this.hoursBank = document.getElementById('total-hours');
+  }
+
+  _createClass(TimeBank, [{
+    key: "updateTime",
+    value: function updateTime(currSessionTime) {
+      console.log('curr time', currSessionTime);
+      console.log('total seconds: ', this.seconds, 'total minutes', this.minutes, 'total hours: ', this.hours);
+      this.seconds += currSessionTime[2];
+      this.minutes += currSessionTime[1];
+      this.hours += currSessionTime[0];
+
+      if (this.seconds >= 60) {
+        this.seconds %= 60;
+        this.minutes += 1;
+      }
+
+      if (this.minutes >= 60) {
+        this.minutes %= 60;
+        this.hours += 1;
+      }
+
+      this.updateTimeTag();
+    }
+  }, {
+    key: "updateTimeTag",
+    value: function updateTimeTag() {
+      this.totalTimeTag.innerHTML = this.stringifyTime();
+    }
+  }, {
+    key: "stringifyTime",
+    value: function stringifyTime() {
+      var _this = this;
+
+      var time = [this.hours, this.minutes, this.seconds].map(function (timeUnit) {
+        return _this.stringifyTimeUnit(timeUnit);
+      });
+      var addZeroes = 5 - time[0].length;
+      var zero = "0";
+
+      for (var i = 1; i < addZeroes; i++) {
+        zero += '0';
+      }
+
+      console.log('ZERO', zero);
+      time[0] = zero + time[0];
+      return time.join(":");
+    }
+  }, {
+    key: "stringifyTimeUnit",
+    value: function stringifyTimeUnit(integer, hour) {
+      if (integer < 10) {
+        return '0' + integer;
+      } else {
+        return integer.toString();
+      }
+    }
+  }]);
+
+  return TimeBank;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (TimeBank);
 
 /***/ }),
 
@@ -336,7 +434,6 @@ function () {
     value: function addSquareToTimeBank(timeBank, color) {
       var square = document.createElement('li');
       square.setAttribute('style', "background-color: " + Object(_assets_colors_js__WEBPACK_IMPORTED_MODULE_0__["getColor"])(color));
-      console.log(Object(_assets_colors_js__WEBPACK_IMPORTED_MODULE_0__["getColor"])(color));
 
       if (timeBank === "seconds") {
         this.secondsBank.appendChild(square);

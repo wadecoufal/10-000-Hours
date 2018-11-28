@@ -14,23 +14,28 @@ export const toggleTimeButton = (e, timer) => {
   console.log(e);
 }
 
-export const submitTime = (timer, totalTimeTag) => {
+export const submitTime = (timer, timeBank) => {
   // are you sure you want to submit? (alert)
   const confirmed = confirm("Are you sure you want to finish this session?");
 
   if (confirmed) {
-    const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
+    // grab current session time
+    // add current session time to TimeBank (it will update tag itself)
+    // reset current session time 
+
+    // const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
     const currentSessionTimeArr = timer.getTimeUnitsAsInts();
 
-    console.log('totalTimeArr', totalTimeArr);
-    console.log('currentSessionTimeArr', currentSessionTimeArr);
+    timeBank.updateTime(currentSessionTimeArr);
+    // console.log('totalTimeArr', totalTimeArr);
+    // console.log('currentSessionTimeArr', currentSessionTimeArr);
 
-    const newTotalTimeArr = [];
-    for (let i = 0; i < 3; i++) {
-      newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
-    }
-    console.log(stringifyTotalTime(newTotalTimeArr));
-    totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
+    // const newTotalTimeArr = [];
+    // for (let i = 0; i < 3; i++) {
+    //   newTotalTimeArr[i] = totalTimeArr[i] + currentSessionTimeArr[i];
+    // }
+    // console.log(stringifyTotalTime(newTotalTimeArr));
+    // totalTimeTag.innerHTML = stringifyTotalTime(newTotalTimeArr);
     timer.resetTimer();
   }
 }
