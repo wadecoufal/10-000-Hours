@@ -394,6 +394,7 @@ function () {
     this.minutes = 0;
     this.hours = 0;
     this.timerTag = timerTag;
+    this.titleTag = document.getElementById('title');
     this.secondsBank = document.getElementById('seconds');
     this.minutesBank = document.getElementById('minutes');
     this.hoursBank = document.getElementById('hours');
@@ -423,7 +424,7 @@ function () {
         _this.incrementTime();
 
         _this.updateTimerDisplay();
-      }, 10);
+      }, 1000);
     }
   }, {
     key: "pauseTimer",
@@ -438,7 +439,9 @@ function () {
   }, {
     key: "updateTimerDisplay",
     value: function updateTimerDisplay() {
-      this.timerTag.innerHTML = this.stringifyTime();
+      var stringifiedTime = this.stringifyTime();
+      this.timerTag.innerHTML = stringifiedTime;
+      this.titleTag.innerHTML = "10,000 Hours " + stringifiedTime;
     }
   }, {
     key: "stringifyTime",

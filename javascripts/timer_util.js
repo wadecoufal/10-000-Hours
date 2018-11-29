@@ -8,6 +8,7 @@ class Timer {
     this.hours = 0;
 
     this.timerTag = timerTag;
+    this.titleTag = document.getElementById('title');
 
     this.secondsBank = document.getElementById('seconds');
     this.minutesBank = document.getElementById('minutes');
@@ -35,7 +36,7 @@ class Timer {
     this.timerInterval = setInterval( () => {
       this.incrementTime();
       this.updateTimerDisplay();
-    }, 10);
+    }, 1000);
   }
 
   pauseTimer() {
@@ -47,7 +48,9 @@ class Timer {
   }
 
   updateTimerDisplay() {
-    this.timerTag.innerHTML = this.stringifyTime();
+    const stringifiedTime = this.stringifyTime();
+    this.timerTag.innerHTML = stringifiedTime;
+    this.titleTag.innerHTML = "10,000 Hours " + stringifiedTime;
   }
 
   stringifyTime() {
