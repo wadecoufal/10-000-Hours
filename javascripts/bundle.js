@@ -205,7 +205,8 @@ var submitTime = function submitTime(timer, timeBank) {
     // reset current session time 
     // const totalTimeArr = breakTimeIntoIntUnits(totalTimeTag.innerHTML);
     var currentSessionTimeArr = timer.getTimeUnitsAsInts();
-    timeBank.updateTime(currentSessionTimeArr); // console.log('totalTimeArr', totalTimeArr);
+    timeBank.updateTime(currentSessionTimeArr);
+    timeBank.fill(); // console.log('totalTimeArr', totalTimeArr);
     // console.log('currentSessionTimeArr', currentSessionTimeArr);
     // const newTotalTimeArr = [];
     // for (let i = 0; i < 3; i++) {
@@ -267,7 +268,7 @@ function () {
 
     this.seconds = 0;
     this.minutes = 0;
-    this.hours = 0;
+    this.hours = 100;
     this.totalTimeTag = totalTimeTag;
     this.secondsBank = document.getElementById('total-seconds');
     this.minutesBank = document.getElementById('total-minutes');
@@ -275,6 +276,24 @@ function () {
   }
 
   _createClass(TimeBank, [{
+    key: "fill",
+    value: function fill() {
+      this.fillBank(this.seconds, this.secondsBank);
+      this.fillBank(this.minutes, this.minutesBank);
+      this.fillBank(this.hours, this.hoursBank);
+    }
+  }, {
+    key: "fillBank",
+    value: function fillBank(time, tag) {
+      tag.innerHTML = "";
+
+      for (var i = 0; i < time; i++) {
+        var li = document.createElement('li');
+        li.setAttribute('style', 'background-color: black');
+        tag.appendChild(li);
+      }
+    }
+  }, {
     key: "updateTime",
     value: function updateTime(currSessionTime) {
       console.log('curr time', currSessionTime);

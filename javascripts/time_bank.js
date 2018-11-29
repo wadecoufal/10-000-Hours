@@ -3,13 +3,29 @@ class TimeBank {
   constructor(totalTimeTag) {
     this.seconds = 0;
     this.minutes = 0;
-    this.hours = 0;
+    this.hours = 100;
 
     this.totalTimeTag = totalTimeTag;
 
     this.secondsBank = document.getElementById('total-seconds');
     this.minutesBank = document.getElementById('total-minutes');
     this.hoursBank = document.getElementById('total-hours');
+  }
+
+  fill() {
+    this.fillBank(this.seconds, this.secondsBank);
+    this.fillBank(this.minutes, this.minutesBank);
+    this.fillBank(this.hours, this.hoursBank);
+  }
+
+  fillBank(time, tag) {
+    tag.innerHTML = "";
+
+    for (let i = 0; i < time; i++) {
+      const li = document.createElement('li');
+      li.setAttribute('style', 'background-color: black');
+      tag.appendChild(li);
+    }
   }
 
   updateTime(currSessionTime) {

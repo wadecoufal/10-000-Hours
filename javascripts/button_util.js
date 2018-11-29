@@ -27,6 +27,8 @@ export const submitTime = (timer, timeBank) => {
     const currentSessionTimeArr = timer.getTimeUnitsAsInts();
 
     timeBank.updateTime(currentSessionTimeArr);
+
+    timeBank.fill();
     // console.log('totalTimeArr', totalTimeArr);
     // console.log('currentSessionTimeArr', currentSessionTimeArr);
 

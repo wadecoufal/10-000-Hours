@@ -72,6 +72,8 @@ main {
       width: 100px;
       height: 100%;
       #total-seconds, #total-minutes {
+        display: grid;
+        grid-template: repeat(12, 1fr) / repeat(5, 1fr);
         li {
           border-radius: 7px;
           width: 19px;
@@ -92,6 +94,15 @@ main {
         background-color: #ffcc80;
         width: 511px;
         height: 100%;
+
+        display: grid;
+        grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+        li {
+          border-radius: 1px;
+          width: 4px;
+          height: 4px;
+          margin: auto;
+        }
       }
   }
 
