@@ -1,11 +1,16 @@
 class TimeBank {
 
-  constructor(totalTimeTag) {
-    this.seconds = 0;
-    this.minutes = 0;
-    this.hours = 100;
+  constructor(totalTime, totalTimeTag) {
+    // this.seconds = parseInt(totalTimeTag.innerHTML.split(":")[2]);
+    // this.minutes = parseInt(totalTimeTag.innerHTML.split(":")[1]);
+    // this.hours = parseInt(totalTimeTag.innerHTML.split(":")[0]);
+
+    this.seconds = totalTime[2];
+    this.minutes = totalTime[1];
+    this.hours = totalTime[0];
 
     this.totalTimeTag = totalTimeTag;
+    this.totalTimeTag.innerHTML = this.stringifyTime();
 
     this.secondsBank = document.getElementById('total-seconds');
     this.minutesBank = document.getElementById('total-minutes');
@@ -47,6 +52,7 @@ class TimeBank {
     }
 
     this.updateTimeTag();
+    localStorage.setItem('total-time', [this.hours, this.minutes, this.seconds]);
   }
 
   updateTimeTag() {

@@ -154,10 +154,15 @@ document.addEventListener("DOMContentLoaded", function () {
   var timerTag = document.getElementById("time");
   var timer = new _javascripts_timer_util_js__WEBPACK_IMPORTED_MODULE_1__["default"](timerTag);
   var totalTimeTag = document.getElementById("time-total-bank"); // will be populated by localStorage
+  // const totalTime = "00010:02:37";
+  // totalTimeTag.innerHTML = totalTime;
+  // const totalTime = localStorage['total-time'] ? localStorage['total-time'] : [0,0,0];
 
-  var totalTime = "00000:00:00";
-  totalTimeTag.innerHTML = totalTime;
-  var timeBank = new _javascripts_time_bank_js__WEBPACK_IMPORTED_MODULE_2__["default"](totalTimeTag);
+  var totalTime = localStorage['total-time'] ? localStorage['total-time'].split(',').map(function (unit) {
+    return parseInt(unit);
+  }) : [0, 0, 0];
+  var timeBank = new _javascripts_time_bank_js__WEBPACK_IMPORTED_MODULE_2__["default"](totalTime, totalTimeTag);
+  timeBank.fill();
   timerButton.addEventListener("click", function (e) {
     Object(_javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__["toggleTimeButton"])(e, timer);
   });
@@ -263,13 +268,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var TimeBank =
 /*#__PURE__*/
 function () {
-  function TimeBank(totalTimeTag) {
+  function TimeBank(totalTime, totalTimeTag) {
     _classCallCheck(this, TimeBank);
 
-    this.seconds = 0;
-    this.minutes = 0;
-    this.hours = 100;
+    // this.seconds = parseInt(totalTimeTag.innerHTML.split(":")[2]);
+    // this.minutes = parseInt(totalTimeTag.innerHTML.split(":")[1]);
+    // this.hours = parseInt(totalTimeTag.innerHTML.split(":")[0]);
+    this.seconds = totalTime[2];
+    this.minutes = totalTime[1];
+    this.hours = totalTime[0];
     this.totalTimeTag = totalTimeTag;
+    this.totalTimeTag.innerHTML = this.stringifyTime();
     this.secondsBank = document.getElementById('total-seconds');
     this.minutesBank = document.getElementById('total-minutes');
     this.hoursBank = document.getElementById('total-hours');
@@ -313,6 +322,7 @@ function () {
       }
 
       this.updateTimeTag();
+      localStorage.setItem('total-time', [this.hours, this.minutes, this.seconds]);
     }
   }, {
     key: "updateTimeTag",

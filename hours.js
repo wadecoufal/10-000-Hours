@@ -19,10 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalTimeTag = document.getElementById("time-total-bank");
   
   // will be populated by localStorage
-  const totalTime = "00000:00:00";
-  totalTimeTag.innerHTML = totalTime;
+  // const totalTime = "00010:02:37";
+  // totalTimeTag.innerHTML = totalTime;
+  // const totalTime = localStorage['total-time'] ? localStorage['total-time'] : [0,0,0];
+  const totalTime = localStorage['total-time'] ?
+    localStorage['total-time'].split(',').map(unit => parseInt(unit)) : [0,0,0];
 
-  const timeBank = new TimeBank(totalTimeTag);
+  const timeBank = new TimeBank(totalTime, totalTimeTag);
+  timeBank.fill();
 
   timerButton.addEventListener("click", (e) => {
     toggleTimeButton(e, timer);
