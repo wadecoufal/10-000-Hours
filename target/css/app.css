@@ -1,9 +1,15 @@
+html {
+  background-color: black; }
+
 body {
   font-family: 'Roboto Condensed', sans-serif;
   width: 100%;
   height: 100%;
   text-align: center;
-  color: white; }
+  color: white;
+  -webkit-transition: 3s opacity;
+  -o-transition: 3s opacity;
+  transition: 3s opacity; }
 
 header {
   background-color: green;
@@ -128,3 +134,23 @@ main {
 
 .col-header, .col-footer {
   height: 75px; }
+
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 0, 0, 0.6);
+  color: white;
+  z-index: 3;
+  -webkit-transition: 5s;
+  -o-transition: 5s;
+  transition: 5s;
+  opacity: 1; }
+
+.hidden {
+  opacity: 0;
+  -webkit-transition: 5s;
+  -o-transition: 5s;
+  transition: 5s; }
