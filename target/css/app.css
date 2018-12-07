@@ -7,6 +7,7 @@ body {
   height: 100%;
   text-align: center;
   color: white;
+  opacity: 1;
   -webkit-transition: 3s opacity;
   -o-transition: 3s opacity;
   transition: 3s opacity; }
@@ -51,10 +52,14 @@ main {
     display: block; } }
 
 #time-bank .col-header {
-  background-color: purple; }
+  background-color: #282828;
+  border: 2px solid #3c3c3c;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; }
 
 #time-bank .col-mid {
-  background-color: brown;
+  background-color: #282828;
+  border: 2px solid #3c3c3c;
   height: 480px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -70,6 +75,8 @@ main {
     width: 100px;
     height: 100%; }
     #time-bank .col-mid div #total-seconds, #time-bank .col-mid div #total-minutes {
+      background-color: #282828;
+      border: 2px solid #3c3c3c;
       display: grid;
       grid-template: repeat(12, 1fr)/repeat(5, 1fr); }
       #time-bank .col-mid div #total-seconds li, #time-bank .col-mid div #total-minutes li {
@@ -78,13 +85,12 @@ main {
         height: 19px;
         margin: auto; }
     #time-bank .col-mid div #total-seconds {
-      background-color: #e6ffe6;
+      border-top: none;
       height: 50%; }
     #time-bank .col-mid div #total-minutes {
-      background-color: #e6f5ff;
+      border-bottom: none;
       height: 50%; }
   #time-bank .col-mid #total-hours {
-    background-color: #ffcc80;
     width: 511px;
     height: 100%;
     display: grid;
@@ -96,10 +102,16 @@ main {
       margin: auto; }
 
 #time-bank .col-footer {
-  background-color: orange; }
+  background-color: #282828;
+  border: 2px solid #3c3c3c;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px; }
 
 #current-session .col-header {
-  background-color: pink; }
+  background-color: #282828;
+  border: 2px solid #3c3c3c;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; }
 
 #current-session .col-mid {
   background-color: blue;
@@ -107,6 +119,11 @@ main {
   width: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
+  #current-session .col-mid #seconds, #current-session .col-mid #minutes, #current-session .col-mid #hours {
+    background-color: #282828;
+    border: 2px solid #3c3c3c;
+    border-top: none;
+    border-bottom: none; }
   #current-session .col-mid #seconds, #current-session .col-mid #minutes {
     display: grid;
     grid-template: repeat(12, 1fr)/repeat(5, 1fr); }
@@ -115,12 +132,7 @@ main {
       width: 38px;
       height: 38px;
       margin: auto; }
-  #current-session .col-mid #seconds {
-    background-color: #e6ffe6; }
-  #current-session .col-mid #minutes {
-    background-color: #e6f5ff; }
   #current-session .col-mid #hours {
-    background-color: #f0e6ff;
     display: grid;
     grid-template: repeat(5, 1fr)/repeat(2, 1fr); }
     #current-session .col-mid #hours li {

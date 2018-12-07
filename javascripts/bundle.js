@@ -141,7 +141,7 @@ var getColor = function getColor(color) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _javascripts_button_util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./javascripts/button_util.js */ "./javascripts/button_util.js");
-/* harmony import */ var _javascripts_intro_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./javascripts/intro.js */ "./javascripts/intro.js");
+/* harmony import */ var _javascripts_intro_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./javascripts/intro.js */ "./javascripts/intro.js");
 /* harmony import */ var _javascripts_timer_util_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./javascripts/timer_util.js */ "./javascripts/timer_util.js");
 /* harmony import */ var _javascripts_time_bank_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./javascripts/time_bank.js */ "./javascripts/time_bank.js");
 // import * AS ButtonUtil from './javascripts/button_util.js';
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var timer = new _javascripts_timer_util_js__WEBPACK_IMPORTED_MODULE_2__["default"](timerTag);
   var totalTimeTag = document.getElementById("time-total-bank"); // run welcome modal. once finished, display main page
 
-  Object(_javascripts_intro_js__WEBPACK_IMPORTED_MODULE_4__["intro"])(); // grab total time accrued from localStorage
+  Object(_javascripts_intro_js__WEBPACK_IMPORTED_MODULE_1__["intro"])(); // grab total time accrued from localStorage
 
   var totalTime = localStorage['total-time'] ? localStorage['total-time'].split(',').map(function (unit) {
     return parseInt(unit);
@@ -264,8 +264,10 @@ var stringifyTotalTime = function stringifyTotalTime(timeArr) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "intro", function() { return intro; });
 var intro = function intro() {
-  var modal = document.getElementsByClassName('modal')[0];
-  modal.classList.remove('hidden');
+  // const modal = document.getElementsByClassName('modal')[0];
+  // modal.classList.remove('hidden');
+  var body = document.getElementsByTagName('body')[0];
+  body.classList.remove('hidden');
 };
 
 /***/ }),
