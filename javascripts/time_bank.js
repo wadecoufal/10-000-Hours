@@ -1,3 +1,5 @@
+import { getColor } from '../assets/colors.js';
+
 class TimeBank {
 
   constructor(totalTime, totalTimeTag) {
@@ -18,17 +20,17 @@ class TimeBank {
   }
 
   fill() {
-    this.fillBank(this.seconds, this.secondsBank);
-    this.fillBank(this.minutes, this.minutesBank);
-    this.fillBank(this.hours, this.hoursBank);
+    this.fillBank(this.seconds, this.secondsBank, 'green');
+    this.fillBank(this.minutes, this.minutesBank, 'blue');
+    this.fillBank(this.hours, this.hoursBank, 'purple');
   }
 
-  fillBank(time, tag) {
+  fillBank(time, tag, color) {
     tag.innerHTML = "";
 
     for (let i = 0; i < time; i++) {
       const li = document.createElement('li');
-      li.setAttribute('style', 'background-color: black');
+      li.setAttribute('style', `background-color: ${getColor(color)}`);
       tag.appendChild(li);
     }
   }

@@ -281,11 +281,14 @@ var intro = function intro() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assets_colors_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/colors.js */ "./assets/colors.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 var TimeBank =
 /*#__PURE__*/
@@ -309,18 +312,18 @@ function () {
   _createClass(TimeBank, [{
     key: "fill",
     value: function fill() {
-      this.fillBank(this.seconds, this.secondsBank);
-      this.fillBank(this.minutes, this.minutesBank);
-      this.fillBank(this.hours, this.hoursBank);
+      this.fillBank(this.seconds, this.secondsBank, 'green');
+      this.fillBank(this.minutes, this.minutesBank, 'blue');
+      this.fillBank(this.hours, this.hoursBank, 'purple');
     }
   }, {
     key: "fillBank",
-    value: function fillBank(time, tag) {
+    value: function fillBank(time, tag, color) {
       tag.innerHTML = "";
 
       for (var i = 0; i < time; i++) {
         var li = document.createElement('li');
-        li.setAttribute('style', 'background-color: black');
+        li.setAttribute('style', "background-color: ".concat(Object(_assets_colors_js__WEBPACK_IMPORTED_MODULE_0__["getColor"])(color)));
         tag.appendChild(li);
       }
     }
