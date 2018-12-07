@@ -28,17 +28,30 @@ class TimeBank {
   fillBank(time, tag, color) {
     tag.innerHTML = "";
 
-    for (let i = 0; i < time; i++) {
-      const li = document.createElement('li');
-      li.setAttribute('style', `background-color: ${getColor(color)}`);
-      tag.appendChild(li);
-    }
+    // for (let i = 0; i < time; i++) {
+    //   const li = document.createElement('li');
+    //   li.setAttribute('style', `background-color: ${getColor(color)}`);
+    //   tag.appendChild(li);
+    // }
+    console.log('time', time);
+    console.log('color', color);
+    let i = 0;
+    const fill = setInterval( function() {
+      if (i === time || time === 0) {
+        console.log("I", i);
+        clearInterval(fill);
+      } else {
+        console.log('i val', i);
+        const li = document.createElement('li');
+        li.setAttribute('style', `background-color: ${getColor(color)}`);
+        tag.appendChild(li);
+        i++;
+      }
+    }, 50);
+
   }
 
   updateTime(currSessionTime) {
-    console.log('curr time', currSessionTime);
-    console.log('total seconds: ', this.seconds, 'total minutes', this.minutes, 'total hours: ', this.hours);
-
     this.seconds += currSessionTime[2];
     this.minutes += currSessionTime[1];
     this.hours += currSessionTime[0];
